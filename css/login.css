@@ -1,0 +1,43 @@
+html {
+    text-align: center;
+}
+
+input[type=text]{
+    padding: 8px 20px;
+    margin: 10px auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input[type=password]{
+    padding: 8px 20px;
+    margin: 10px auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+button[type=submit] {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    margin: 5px auto;
+    padding: 5px 30px;
+}
+
+.signin-form {
+    /* position: absolute;
+    top: 20%;
+    left: 25%;
+    height: 420px;
+    width: 654px;
+    margin: 50px auto; */
+
+    height: 220px;
+    width: 654px;
+    margin: 10% auto;
+    border-radius: 7px 7px 7px 7px;
+}
