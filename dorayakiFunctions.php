@@ -148,12 +148,26 @@
         execute($query);
     }
 
+    // menampilkan detail sebuah varian dorayaki
+    function displayDetail($nama) {
+        global $db;
+        $query = "
+        SELECT * FROM dorayaki WHERE nama = '$nama';";
+        $result = $db->query($query);
+        echo "<table>";
+        while ($row=$result->fetchArray()) {
+            echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td></tr>";
+        }
+        echo "</table>";
+    }
+
     // DRIVER
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
     // print getStock('dora');
     changeStock('dora',23);
     //deleteVariant('dora');
+    displayDetail('dora');
     
     $db->close(); // taroh diakhir aja
 
