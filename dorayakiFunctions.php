@@ -138,12 +138,20 @@
     }
 
     // menghapus varian dorayaki
+        function deleteVariant($nama) {
+        $query = "
+        DELETE FROM dorayaki 
+        WHERE nama = '$nama';";
+
+        execute($query);
+    }
 
     // DRIVER
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
     // print getStock('dora');
     changeStock('dora',23);
+    //deleteVariant('dora');
     
     $db->close(); // taroh diakhir aja
 
