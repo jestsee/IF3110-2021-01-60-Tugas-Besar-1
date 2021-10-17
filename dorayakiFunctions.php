@@ -22,7 +22,9 @@
         deskripsi TEXT,
         harga INT,
         stok INT,
-        gambar TEXT);";
+        gambar TEXT,
+        UNIQUE (nama, deskripsi, harga, gambar)
+    );";
 
     // execute($drop);
     execute($sql);
