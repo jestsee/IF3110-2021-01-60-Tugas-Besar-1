@@ -1,5 +1,35 @@
-html {
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left{
+    left: 0;
+    /*background-color: bisque;*/
+    background-image: url('backgroundindex.png');
+    background-size:cover;
+    height: 97%;
+}
+
+.right{
+    right: 0;
+    background-color:bisque;
+}
+
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    border-radius: 10px;
+    background-color: peachpuff;
+    padding: 20px 30px;
 }
 
 input[type=text]{
@@ -28,6 +58,22 @@ button[type=submit] {
     padding: 5px 30px;
 }
 
+button[type=submitadmin]{
+    background-color: peachpuff;
+    border-color: peachpuff;
+    box-shadow: peachpuff;
+    border : peachpuff;
+    color : gray;
+}
+
+button[type=submitadmin]:hover{
+    color:darksalmon;
+}
+
+button[type=submit]:hover{
+    background-color: gray;
+}
+
 .signin-form {
     /* position: absolute;
     top: 20%;
@@ -36,8 +82,17 @@ button[type=submit] {
     width: 654px;
     margin: 50px auto; */
 
-    height: 220px;
+    /*height: 220px;
     width: 654px;
-    margin: 10% auto;
+    margin: 10% auto;*/
     border-radius: 7px 7px 7px 7px;
+}
+
+@media only screen and (max-width: 990px){
+    .split{
+        width: 100%;
+        background-image: url('backgroundindex.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }

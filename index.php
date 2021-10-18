@@ -27,16 +27,82 @@
 
     // TODO: kalo cookie nya habis, ada cek session otomatis?
 ?> 
-
+<!--
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola</title>
-</head>
-<body>
-    <h1>ini hlm awal</h1>
-</body>
-</html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/dashboardstylesheet.css">
+    </head>
+    <body>
+            <div class="header">
+            <ul>
+                <li class="navitemleft"><a href="#home"><img src="logos.png" width="150" height="35" style="padding: 0; margin: 0;"></a></li>
+                <li class="navitemsearch"><input type="text" placeholder="Search here :D"></li>
+                <li class="navitem" ><a href="#login">Login</a></li>
+                <li class="navitem" ><a href="#news">News</a></li>
+                <li class="navitem" ><a href="#about">About</a></li>
+            </ul>
+            </div>
+            <div class="wrapper">
+                <div class="isi">
+                    <div class="responsif">
+                        <div class="gambar">
+                            <a href="logos.png"><img src="dorayaki1.jpg" alt="Gambar Dorayaki" width="20" height="20">
+                                <div class="deskripsi">
+                                    Deskripsi dorayaki disini ya
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <div class="responsif">
+                        <div class="gambar">
+                            <a href="logos.png"><img src="dorayaki1.jpg" alt="Gambar Dorayaki" width="20" height="20">
+                                <div class="deskripsi">
+                                    Deskripsi dorayaki disini ya
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <div class="responsif">
+                        <div class="gambar">
+                            <a href="logos.png"><img src="dorayaki1.jpg" alt="Gambar Dorayaki" width="200" height="200">
+                                <div class="deskripsi">
+                                    Deskripsi dorayaki disini ya
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <div class="responsif">
+                        <div class="gambar">
+                            <a href="logos.png"><img src="dorayaki1.jpg" alt="Gambar Dorayaki" width="200" height="200">
+                                <div class="deskripsi">
+                                    Deskripsi dorayaki disini ya
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="responsif">
+                        <div class="gambar">
+                            <a href="logos.png"><img src="dorayaki1.jpg" alt="Gambar Dorayaki" width="200" height="200">
+                                <div class="deskripsi">
+                                    Deskripsi dorayaki disini ya
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="footer">
+                <ul class="isifooter">
+                    <li class="isifooterli"><a href="about.html">About</a></li>
+                    <li class="isifooterli"><a href="privacypolicy.html">Privacy Policy</a></li>
+                    <li class="isifooterli"><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+    </div>
+    </body>
+</html> -->
