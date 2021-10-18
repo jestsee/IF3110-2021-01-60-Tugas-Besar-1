@@ -47,6 +47,5 @@
         execute($query);
     }
 
-    addUser("lala@gmail.com", "lala", "l4l4", 0);
-    
+    // addUser("lala@gmail.com", "lala", "l4l4", 0);
     $db->close(); 

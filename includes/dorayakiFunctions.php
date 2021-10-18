@@ -1,4 +1,6 @@
 <?php
+    // Fungsi-fungsi yang mengatur database dorayaki
+    
     // OPEN DATABASE
     class MyDB extends SQLite3 {
         function __construct() {

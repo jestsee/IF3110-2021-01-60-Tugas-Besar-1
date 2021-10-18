@@ -12,7 +12,22 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="number" min="1" max="50">
-    <button type="submit">submit</button>
+
+    <form action="" method="post">
+
+        <input type="number" min="1" max="50" id="stok">
+        <button type="submit" id="tombol-stok">submit</button>
+
+    </form>
+
+    <!-- tempat datanya berubah -->
+    <div id="container">
+
+        <!-- tampilin data disini? -->
+
+    </div>
+
+    <script src="includes/stok.inc.js">
+    </script>
 </body>
 </html>
