@@ -39,14 +39,14 @@
     }
 
     // menambah user setelah register(?)
-    function addUser($id, $email, $username, $password, $is_admin) {
+    function addUser($email, $username, $password, $is_admin) {
         $query ="
-        INSERT INTO user(id, email, username, password, is_admin)
-        VALUES ('$id', '$email', '$username', '$password', '$is_admin');";
+        INSERT INTO user(email, username, password, is_admin)
+        VALUES ('$email', '$username', '$password', '$is_admin');";
         
         execute($query);
     }
 
-    addUser("1","lala@gmail.com", "lala", "l4l4", 0);
+    addUser("lala@gmail.com", "lala", "l4l4", 0);
     
     $db->close(); 

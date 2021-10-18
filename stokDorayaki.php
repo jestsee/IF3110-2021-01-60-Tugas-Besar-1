@@ -12,7 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="number">
+    <input type="number" min="1" max="50">
     <button type="submit">submit</button>
 </body>
 </html>

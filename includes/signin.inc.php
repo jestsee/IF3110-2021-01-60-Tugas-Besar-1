@@ -4,7 +4,7 @@ session_start();
 // krn belum ada db, pake dummy
 // $usn1 = "user1";
 // $pw1 = "password1";
-include_once "C:/xampp/htdocs/tugas-besar-1/user.php";
+include_once "user.php";
 
 $db = new MyDB();
 

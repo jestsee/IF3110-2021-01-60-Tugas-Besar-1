@@ -2,7 +2,7 @@
     // OPEN DATABASE
     class MyDB extends SQLite3 {
         function __construct() {
-            $this->open('test.db');
+            $this->open('dorayaki.db');
         }
     }
     $db = new MyDB(); //harus ada ini di setiap fungsi
@@ -18,7 +18,7 @@
     $sql ="
     CREATE TABLE IF NOT EXISTS dorayaki(
         id INTEGER PRIMARY KEY,
-        nama TEXT NOT NULL UNIQUE,
+        nama TEXT,
         deskripsi TEXT,
         harga INT,
         stok INT,
