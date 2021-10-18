@@ -39,7 +39,7 @@ if(isset($_POST["submit"])) {
     } else {
         // username dan password tidak cocok
         // echo 'PASSWORD DAN USERNAME TIDAK COCOK';
-        header("location: ../login.php");
+        header("location: ../login.php?msg=failed");
     }
     
     // kalo salah satu kotak kosong

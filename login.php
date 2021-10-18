@@ -9,6 +9,9 @@
             displayAlert("Ayo sign in yang benar");
         }
     }
+    if (isset($_GET["msg"]) && $_GET["msg"] == "failed") {
+        displayAlert("Wrong Username/Password");
+    }
 
     // cek cookie
     // if(isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
