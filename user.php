@@ -17,7 +17,8 @@
 
     $sql ="
     CREATE TABLE IF NOT EXISTS user(
-        email TEXT PRIMARY KEY,
+        id INTEGER PRIMARY KEY,
+        email TEXT,
         username TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
         is_admin NUMBER(1)
@@ -38,14 +39,14 @@
     }
 
     // menambah user setelah register(?)
-    function addUser($email, $username, $password, $is_admin) {
+    function addUser($id, $email, $username, $password, $is_admin) {
         $query ="
-        INSERT INTO user(email, username, password, is_admin)
-        VALUES ('$email', '$username', '$password', '$is_admin');";
+        INSERT INTO user(id, email, username, password, is_admin)
+        VALUES ('$id', '$email', '$username', '$password', '$is_admin');";
         
         execute($query);
     }
 
-    addUser("lala@gmail.com", "lala", "l4l4", 0);
+    addUser("1","lala@gmail.com", "lala", "l4l4", 0);
     
     $db->close(); 

@@ -2,8 +2,11 @@
 session_start();
 
 // krn belum ada db, pake dummy
-$usn1 = "user1";
-$pw1 = "password1";
+// $usn1 = "user1";
+// $pw1 = "password1";
+include_once "C:/xampp/htdocs/tugas-besar-1/user.php";
+
+$db = new MyDB();
 
 // USER LOGIN
 if(isset($_POST["submit"])) {
@@ -13,11 +16,14 @@ if(isset($_POST["submit"])) {
 
     require_once 'functions.inc.php';
 
-    // the hash of the password that can be stored in the database
-    // pw1 as dummy
-    $hash = password_hash($pw1, PASSWORD_DEFAULT);
-    // echo "Generated hash: ".$hash;
+    $query = "SELECT * FROM user where username = '$usn';";
 
+    $result = $db->query($query);
+    while ($row=$result->fetchArray()) {
+        // the hash of the password that can be stored in the database
+        $hash = password_hash($row['password'], PASSWORD_DEFAULT);
+    }
+    
     // verify the hash against the password entered
     $verify = password_verify($pw, $hash);
 
