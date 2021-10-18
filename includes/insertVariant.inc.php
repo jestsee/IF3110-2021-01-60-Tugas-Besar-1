@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-// krn belum ada db, pake dummy
-// $usn1 = "user1";
-// $pw1 = "password1";
 include_once "dorayakiFunctions.php";
 
 $db = new MyDB();
@@ -21,3 +18,4 @@ if(isset($_POST["submit"])) {
     
     insertVariant($name, $desc, $price, $stock, $img);
 } 
+?>

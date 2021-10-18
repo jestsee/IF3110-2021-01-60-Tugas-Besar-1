@@ -163,13 +163,25 @@
         echo "</table>";
     }
 
+    function displayAll() {
+        global $db;
+        $query = "
+        SELECT nama FROM dorayaki";
+        $result = $db->query($query);
+        echo "<table>";
+        while ($row=$result->fetchArray()) {
+            echo "<tr><td>" . $row['nama'] . "<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $row['nama'] . "'>delete</button> </td></tr> <br>";       
+        }
+        echo "</table>";
+    }
+
     // DRIVER
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
     // print getStock('dora');
     changeStock('dora',23);
     //deleteVariant('dora');
-    displayDetail('dora');
+    //displayDetail('dora');
     
     $db->close(); // taroh diakhir aja
 
