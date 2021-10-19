@@ -1,6 +1,6 @@
 // ambil elemen2 yang dibutuhkan
 var stokInput = document.getElementById('stok');
-var stokTombol = document.getElementById('tombol-stok');
+var tombolBeli = document.getElementById('tombol-beli');
 var harga = document.getElementById('harga');
 
 // sementara event nya pake change atau input (input bs cover semua)

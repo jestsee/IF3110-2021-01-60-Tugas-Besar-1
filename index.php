@@ -26,6 +26,15 @@
     }
 
     // TODO: kalo cookie nya habis, ada cek session otomatis?
+?>
+<?php
+require_once 'includes/functions.inc.php';
+
+// menampilkan pesan bahwa pembelian berhasil dilakukan
+if (isset($_GET['pembelian'])) {
+    displayAlert('Pembelian berhasil');
+}
+
 ?> 
 <!--
 <!DOCTYPE html>

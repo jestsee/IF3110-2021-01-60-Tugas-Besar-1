@@ -1,8 +1,3 @@
-<?php
-
-// pembeli hanya dapat mengurangi stok
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,22 +8,21 @@
 </head>
 <body>
     <!-- tempat datanya berubah 
-      CATATAN:
-    - habis klik beli di halaman detail varian bakal direct ke sini
-    - kalo bisa pas dari halaman detail ke sini tuh ngepass indeks 
-      dorayakinya buat dapet info stok dan harga gitu2
-    - terdapat tombol + - buat stok
-    - terdapat tombol beli
-    - harga pada layar realtime (jumlah * harga satuan)
-    - stok jumlah pembelian maksimal diupdate secara real-time
-    - stok baru berkurang setelah pencet tombol beli
+      TODO DDU DU DDU DU:
+    ( ) habis klik beli di halaman detail varian bakal direct ke sini
+    ( ) kalo bisa pas dari halaman detail ke sini tuh ngepass id dorayaki 
+        dorayakinya buat dapet info stok dan harga gitu2
+    (v) terdapat tombol + - buat stok
+    (v) terdapat tombol beli
+    (v) harga pada layar realtime (jumlah * harga satuan)
+    (v) stok jumlah pembelian maksimal diupdate secara real-time
+    (v) stok baru berkurang setelah pencet tombol beli
+    ( ) nanganin kasus kalo statechange ga ready
     -->
 
-    <form action="" method="post">
-
-        <input type="number" min="1" max="50" id="stok">
-        <button type="submit" id="tombol-stok">submit</button>
-
+    <form id="id-produk" method="post">
+        <input type="number" name="stok" min="1" max="50" id="stok">
+        <button type="submit" name="beli" id="tombol-beli">Beli</button>
     </form>
 
     <!-- tempat datanya berubah -->
@@ -39,7 +33,13 @@
 
     </div>
 
-    <script src="includes/stok.inc.js">
+    <script src="includes/stok.inc.js"></script>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const id = urlParams.get('id')
+      document.getElementById('id-produk').action = "includes/kuranginStok.php?id=" + id;
     </script>
+
 </body>
 </html>

@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// krn belum ada db, pake dummy
-// $usn1 = "user1";
-// $pw1 = "password1";
+// TODO:
+// ( ) abis login set session status admin/user
+// ( ) cookie id diganti sama id user
 include_once "user.php";
 
 $db = new MyDB();

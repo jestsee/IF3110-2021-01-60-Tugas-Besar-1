@@ -83,6 +83,22 @@
         }
     }
 
+    function beliDorayaki($id, $jumlah) {
+        $stok = getStockbyId($id);
+
+        if( $stok > $jumlah ) {
+            $query = "
+            UPDATE dorayaki
+            SET stok = stok - '$jumlah'
+            WHERE id = '$id';
+            ";
+
+            execute($query);
+        } else {
+            echo 'stok tidak mencukupi';
+        }
+    }
+
     // ngecek apakah nama varian dorayaki eksis
     function dorayakiExist($nama) {
         global $db;
@@ -118,6 +134,24 @@
         SELECT stok
         FROM dorayaki
         WHERE nama = '$nama';";
+
+        $result = $db->query($query)->fetchArray();
+
+        if($result) {
+            $stok = $result['stok'];
+        }
+
+        return $stok;
+    }
+
+    function getStockbyId($id) {
+        global $db;
+        $stok = -99;
+
+        $query = "
+        SELECT stok
+        FROM dorayaki
+        WHERE id = '$id';";
 
         $result = $db->query($query)->fetchArray();
 
@@ -194,7 +228,7 @@
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
     // print getStock('dora');
-    // changeStock('dora',23);
+    // changeStock('dorayaki',23);
     //deleteVariant('dora');
     //displayDetail('dora');
     
