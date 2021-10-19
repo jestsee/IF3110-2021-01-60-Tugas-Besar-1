@@ -19,6 +19,15 @@
     // cek udah login atau belom, kalo belom balik ke login page
     if(isset($_SESSION['login'])) {
         echo "met ya udh login<br>";
+        if(isset($_SESSION['level'])) {
+            // diarahkan ke admin
+            if ($_SESSION['level']=='user') {
+                
+            }
+            else if ($_SESSION['level']=='admin') {
+                header("location: ../tugas-besar-1/includes/admin.php");
+            }
+        }
         echo "<br><a href=\"logout.php\">logout disini</a>";
     } else {
         echo "login dulu bro";
