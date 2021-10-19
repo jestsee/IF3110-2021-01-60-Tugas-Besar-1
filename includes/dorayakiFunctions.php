@@ -192,19 +192,16 @@
         $result = $db->query($query);
         echo "<table>";
         while ($row=$result->fetchArray()) {
-            echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td><td>" . $row['stok'] . "</td><td>" . "<img src='" . $row['gambar'] . "' width='30' height='30'> </td></tr><br>
-            
-            <form action='../beliDorayaki.php?id=". $row['id']."' method='post'>
-            </form>";
+            echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td><td>" . $row['stok'] . "</td><td>" . "<img src='" . $row['gambar'] . "' width='30' height='30'> </td></tr><br>";
             if($_SESSION['level']=='user') {
-                buyForUser($row,$nama);
+                buyForUser($row,$row['nama']);
             }
         }
         echo "</table>";
     }
 
     function buyForUser($row, $nama) {
-        echo "<button type='submit' name='beli' value='" . $nama . "'>beli</button>";
+        echo "<form action='../beliDorayaki.php?id=". $row['id']."' method='post'><button type='submit' name='beli' value='" . $nama . "'>beli</button></form>";
     }
 
     // menampilkan seluruh varian dorayaki
