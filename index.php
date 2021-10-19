@@ -30,10 +30,12 @@
         if(isset($_SESSION['level'])) {
             // diarahkan ke admin
             if ($_SESSION['level']=='user') {
-                
+                // TODO : echo tempat" yang bisa dibuka user
             }
             else if ($_SESSION['level']=='admin') {
-                header("location: ../tugas-besar-1/includes/admin.php");
+                //header("location: ../tugas-besar-1/includes/admin.php");
+                echo "<form action='includes/displayDorayaki.inc.php' method='post'><button type='submit' name='submit'>Display All Dorayaki</button></form>";
+                echo "<form action= 'insertVariantPage.php' method='post' enctype='multipart/form-data'><button type='submit' name='submit'>Insert New Variant</button></form>";
             }
         }
         echo "<br><a href=\"logout.php\">logout disini</a>";
@@ -44,6 +46,7 @@
 
     // TODO: kalo cookie nya habis, ada cek session otomatis?
 ?>
+
 <?php
 require_once 'includes/functions.inc.php';
 
@@ -53,6 +56,9 @@ if (isset($_GET['pembelian'])) {
 }
 
 ?> 
+
+
+
 <!--
 <!DOCTYPE html>
 <html>
