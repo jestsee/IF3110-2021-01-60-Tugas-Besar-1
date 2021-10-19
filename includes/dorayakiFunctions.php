@@ -192,7 +192,11 @@
         $result = $db->query($query);
         echo "<table>";
         while ($row=$result->fetchArray()) {
-            echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td><td>" . $row['stok'] . "</td><td>" . "<img src='" . $row['gambar'] . "' width='30' height='30'> </td></tr>";
+            echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td><td>" . $row['stok'] . "</td><td>" . "<img src='" . $row['gambar'] . "' width='30' height='30'> </td></tr><br>
+            
+            <form action='../beliDorayaki.php?id=". $row['id']."' method='post'>
+            <button type='submit' name='beli' value='" . $row['nama'] . "'>beli</button> 
+            </form>";
         }
         echo "</table>";
     }
@@ -201,11 +205,11 @@
     function displayAll() {
         global $db;
         $query = "
-        SELECT nama FROM dorayaki";
+        SELECT id,nama FROM dorayaki";
         $result = $db->query($query);
         echo "<table>";
         while ($row=$result->fetchArray()) {
-            echo "<tr><td>" . $row['nama'] . "<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $row['nama'] . "'>delete</button> </form> <form action='displayVariant.inc.php' method='post'><button type='submit' name='detail' value='" . $row['nama'] . "'>detail</button> </form> </td></tr> <br>";      
+            echo "<tr><td>" . $row['nama'] . "<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $row['nama'] . "'>delete</button> </form> <form action='displayVariant.inc.php?id=". $row['id']."' method='post'><button type='submit' name='detail' value='" . $row['nama'] . "'>detail</button> </form> </td></tr> <br>";      
         }
         echo "</table>";
     }
