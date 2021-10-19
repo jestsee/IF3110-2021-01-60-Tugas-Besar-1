@@ -158,11 +158,12 @@
         $result = $db->query($query);
         echo "<table>";
         while ($row=$result->fetchArray()) {
-            echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td></tr>";
+            echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td><td>" . $row['stok'] . "</td><td>" . "<img src='" . $row['gambar'] . "' width='30' height='30'> </td></tr>";
         }
         echo "</table>";
     }
 
+    // menampilkan seluruh varian dorayaki
     function displayAll() {
         global $db;
         $query = "
@@ -170,7 +171,7 @@
         $result = $db->query($query);
         echo "<table>";
         while ($row=$result->fetchArray()) {
-            echo "<tr><td>" . $row['nama'] . "<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $row['nama'] . "'>delete</button> </td></tr> <br>";       
+            echo "<tr><td>" . $row['nama'] . "<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $row['nama'] . "'>delete</button> </form> <form action='displayVariant.inc.php' method='post'><button type='submit' name='detail' value='" . $row['nama'] . "'>detail</button> </form> </td></tr> <br>";      
         }
         echo "</table>";
     }
@@ -179,7 +180,7 @@
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
     // print getStock('dora');
-    changeStock('dora',23);
+    // changeStock('dora',23);
     //deleteVariant('dora');
     //displayDetail('dora');
     
