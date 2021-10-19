@@ -204,7 +204,7 @@
     }
 
     function buyForUser($row, $nama) {
-        echo "<button type='submit' name='beli' value='" . $row['nama'] . "'>beli</button>";
+        echo "<button type='submit' name='beli' value='" . $nama . "'>beli</button>";
     }
 
     // menampilkan seluruh varian dorayaki
@@ -226,7 +226,7 @@
     }
 
     function deleteForAdmin($row,$nama) {
-        echo"<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $row['nama'] . "'>delete</button> </form>";
+        echo"<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $nama . "'>delete</button> </form>";
     }
 
     function getInfoById($id) {
