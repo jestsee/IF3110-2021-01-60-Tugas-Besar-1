@@ -9,11 +9,11 @@
     }
     $db = new MyDB(); //harus ada ini di setiap fungsi
 
-    if(!$db) {
-        echo $db->lastErrorMsg();
-    } else {
-        echo "Opened database successfully<br>";
-    }
+    // if(!$db) {
+    //     echo $db->lastErrorMsg();
+    // } else {
+    //     echo "Opened database successfully<br>";
+    // }
 
     $drop = "DROP TABLE dorayaki;";
 
@@ -37,11 +37,11 @@
     function execute($query) {
         global $db;
         $ret = $db->exec($query);
-        if(!$ret){
-            echo $db->lastErrorMsg();
-        } else {
-            echo "Successfully executed<br>";
-        }
+        // if(!$ret){
+        //     echo $db->lastErrorMsg();
+        // } else {
+        //     echo "Successfully executed<br>";
+        // }
         // $db->close();
     }
 
@@ -175,6 +175,20 @@
         echo "</table>";
     }
 
+    function getInfoById($id) {
+        global $db;
+        $query = "SELECT * FROM dorayaki WHERE id = '$id';";
+        $result = $db->query($query);
+
+        while ($row=$result->fetchArray()) {
+            $nama = $row['nama'];
+            $stok = $row['stok']; 
+            $harga = $row['harga'];
+        }
+
+        return array($nama, $stok, $harga);
+    }
+
     // DRIVER
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
@@ -183,7 +197,7 @@
     //deleteVariant('dora');
     //displayDetail('dora');
     
-    $db->close(); // taroh diakhir aja
+    // $db->close(); // taroh diakhir aja
 
     // ide bonus no 5 & 7
     // Simpan id dari dorayakinya dulu

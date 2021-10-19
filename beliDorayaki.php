@@ -12,6 +12,17 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- tempat datanya berubah 
+      CATATAN:
+    - habis klik beli di halaman detail varian bakal direct ke sini
+    - kalo bisa pas dari halaman detail ke sini tuh ngepass indeks 
+      dorayakinya buat dapet info stok dan harga gitu2
+    - terdapat tombol + - buat stok
+    - terdapat tombol beli
+    - harga pada layar realtime (jumlah * harga satuan)
+    - stok jumlah pembelian maksimal diupdate secara real-time
+    - stok baru berkurang setelah pencet tombol beli
+    -->
 
     <form action="" method="post">
 
