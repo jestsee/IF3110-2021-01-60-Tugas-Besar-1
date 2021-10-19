@@ -20,5 +20,6 @@
                 </form>
             </div>
         </div>
+        <script src="includes/register.inc.js"></script>
     </body>
 </html>
