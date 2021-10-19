@@ -31,10 +31,9 @@ if(isset($_POST["submit"])) {
 
     // kalo username dan password cocok
     if($verify) {
-        // buat cookie
-        // id 1 buat dummy, nanti diganti pake id dr db
+        // buat cookie berlakunya semenit
         $_SESSION['login'] = true;
-        setcookie('id', 1, time()+60,'/');
+        setcookie('id', $row['id'], time()+60,'/');
         setcookie('key', hash('sha256', $usn), time()+60,'/');
         if($row['is_admin']==1) {
             $_SESSION['level'] = 'admin';

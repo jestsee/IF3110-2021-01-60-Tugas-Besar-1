@@ -3,17 +3,25 @@
     // INI SEMUA DITAROH DI HALAMAN DIRECT SETELAH SIGNIN.INC.PHP
     session_start();
 
-    // cek cookie
+    // cek cookie 
     if(isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+        
         // ambil infonya dulu
         $id = $_COOKIE['id'];
         $key = $_COOKIE['key'];
 
         // cek keynya cocok ga
-        // user1 dummy
+        // kalo cocok set session
         if($key === hash('sha256','user1')) {
             $_SESSION['login'] = true;
         }
+
+    } else {
+        
+        // cookienya ga ada, cek session ada ga
+        if(isset($_SESSION['login'])) {
+            header("location: logout.php");
+        } // session ada, dibikin logout
     }
 
     // cek udah login atau belom, kalo belom balik ke login page

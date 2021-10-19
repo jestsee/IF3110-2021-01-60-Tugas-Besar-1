@@ -30,6 +30,7 @@
 
         <!-- tampilin harga secara real time disini -->
         <p>Harga: <span id="harga"></span></p>
+        <p>Stok: <span id="stoknya"></span></p>
 
     </div>
 
