@@ -34,7 +34,8 @@
     <!-- tempat datanya berubah -->
     <div id="container">
 
-        <!-- tampilin data disini? -->
+        <!-- tampilin harga secara real time disini -->
+        <p>Harga: <span id="harga"></span></p>
 
     </div>
 
