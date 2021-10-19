@@ -23,6 +23,8 @@ if(isset($_POST["submit"])) {
         // the hash of the password that can be stored in the database
         $hash = password_hash($row['password'], PASSWORD_DEFAULT);
     }
+
+    $row = $result->fetchArray();
     
     // verify the hash against the password entered
     $verify = password_verify($pw, $hash);
@@ -34,7 +36,13 @@ if(isset($_POST["submit"])) {
         $_SESSION['login'] = true;
         setcookie('id', 1, time()+60,'/');
         setcookie('key', hash('sha256', $usn), time()+60,'/');
-        
+        if($row['is_admin']==1) {
+            $_SESSION['level'] = 'admin';
+            header("location: ../admin.php");
+        }
+        else {
+            $_SESSION['level'] = 'user';
+        }
         header("location: ../index.php");
     } else {
         // username dan password tidak cocok
