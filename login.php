@@ -43,7 +43,6 @@
                 <input type="password" name="pw" placeholder="Password..." required>
                 <button type="submit" name="submit">login</button>
                 <br><br>
-                <button type="submitadmin" name="submitadmin">login as admin</button>
             </form>
 
         </section>

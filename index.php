@@ -1,9 +1,7 @@
 <?php
-
-    // INI SEMUA DITAROH DI HALAMAN DIRECT SETELAH SIGNIN.INC.PHP
     session_start();
 
-    // cek cookie 
+    // cek cookie; ini kayaknya mesti ditaroh di tiap halaman?
     if(isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
         
         // ambil infonya dulu
