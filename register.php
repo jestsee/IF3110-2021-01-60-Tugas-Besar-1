@@ -12,11 +12,11 @@
         <div class="split right">
             <div class="centered">
                 <h2><b>Register Account</b></h2><br>
-                <form action="register.inc.php" method="post">
+                <form action="includes/register.inc.php" method="post">
                     <input type="text" id='email' name='email' placeholder="Email" required>
                     <input type="text" id='username' name='username' placeholder='Username' required>
-                    <input type="text" id='password' name='password'placeholder='Password' required><br><br>
-                    <button type="submit" name="Daftar">Register</button>
+                    <input type="password" id='password' name='password'placeholder='Password' required><br><br>
+                    <button type="submit" name="submit">Register</button>
                 </form>
             </div>
         </div>
