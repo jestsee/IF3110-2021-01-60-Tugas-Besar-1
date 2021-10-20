@@ -12,6 +12,7 @@
                 <input type="text" name="price" placeholder="Harga..."><br>
                 <input type="text" name="stock" placeholder="Stok..."><br>
                 <input type="file" id="fileToUpload" name="fileToUpload"><br><br>
+                <!--- TODO: Validasi harga sama stok itu angka, filenya cuma boleh gambar --->
                 <button type="submit" name="submit">Add</button>
                 <br><br>
             </form>
