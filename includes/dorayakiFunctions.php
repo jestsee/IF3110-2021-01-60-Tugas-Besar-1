@@ -240,6 +240,18 @@
         return array($nama, $stok, $harga);
     }
 
+    //nampilin 10 dorayaki pertama buat dashboard
+    function getsepuluhdorayaki(){
+        global $db;
+        $query = "SELECT * FROM dorayaki LIMIT 10;";
+        $result = $db->query($query);
+
+        while ($user=$result->fetchArray()){
+            echo "<div class='responsif'> <div class='gambar'> <a href='" . $user['nama'] .  ".php'><img src=' " . $user['gambar'] . "' alt='Gambar Dorayaki' width='200' height='200'> <div class='deskripsi'> <p>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p>Harga: " . $user['harga'] . "</p><p>Stok :" . $user['stok'] . "</p></div></a></div></div>";
+        }
+    }
+    //getsepuluhdorayaki();
+
     // DRIVER
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
