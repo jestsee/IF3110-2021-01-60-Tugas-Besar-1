@@ -1,3 +1,8 @@
+body {
+    font-family: 'Raleway', sans-serif;
+	font-size: 10pt;
+}
+
 .split {
     height: 100%;
     width: 50%;
@@ -95,4 +100,67 @@ button[type=submit]:hover{
         background-repeat: no-repeat;
         background-size: cover;
     }
+}
+
+form .error-email {
+    position: relative;
+    margin: 7px 0 -5px 0;
+    background: #e74c3c;
+    color: #fceae8;
+    padding: 4px;
+    border-radius: 5px;
+    display: none;
+}
+
+form .error-email:before {
+    position: absolute;
+    content: '';
+    height: 10px;
+    width: 10px;
+    background-color: #e74c3c;
+    right: 20px;
+    top: -5px;
+    transform: rotate(45deg);
+}
+
+form .error-username {
+    position: relative;
+    margin: 7px 0 -5px 0;
+    background: #e74c3c;
+    color: #fceae8;
+    padding: 4px;
+    border-radius: 5px;
+    display: none;
+}
+
+form .error-username:before {
+    position: absolute;
+    content: '';
+    height: 10px;
+    width: 10px;
+    background-color: #e74c3c;
+    right: 20px;
+    top: -5px;
+    transform: rotate(45deg);
+}
+
+.avail-username {
+    position: relative;
+    margin: 7px 0 -5px 0;
+    background: #40c23c;
+    color: #fceae8;
+    padding: 4px;
+    border-radius: 5px;
+    display: none;
+}
+
+.avail-username:before {
+    position: absolute;
+    content: '';
+    height: 10px;
+    width: 10px;
+    background-color: #40c23c;
+    right: 20px;
+    top: -5px;
+    transform: rotate(45deg);
 }
