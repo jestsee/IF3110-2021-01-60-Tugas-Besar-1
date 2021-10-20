@@ -4,8 +4,13 @@
 
     // INI SEMUA DITAROH DI HALAMAN DIRECT SETELAH SIGNIN.INC.PHP
     session_start();
+    class MyDB extends SQLite3 {
+        function __construct() {
+            $this->open('includes/dorayaki.db');
+        }
+    }
 
-    include_once "includes/dorayakiFunctions.php";
+    $db = new MyDB(); //harus ada ini di setiap fungsi
 
     // cek cookie 
     if(isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
@@ -49,13 +54,14 @@
                 <div class="isi">';
                 //panggil fungsi yang nampilin dorayaki
                 //getsepuluhdorayaki();
-                //global $db;
-                //$query = "SELECT * FROM dorayaki LIMIT 10;";
-                //$result = $db->query($query);
+                global $db;
+                $query = "SELECT * FROM dorayaki LIMIT 10;";
+                $result = $db->query($query);
 
-                //while ($user=$result->fetchArray()){
-                //    echo "<div class='responsif'> <div class='gambar'> <a href='" . $user['nama'] .  ".php'><img src=' " . $user['gambar'] . "' alt='Gambar Dorayaki' width='200' height='200'> <div class='deskripsi'> <p>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p>Harga: " . $user['harga'] . "</p><p>Stok :" . $user['stok'] . "</p></div></a></div></div>";
-                //}
+                while ($user=$result->fetchArray()){
+                    // TODO: make image clickable with the existing function
+                    echo "<div class='responsif'> <div class='gambar'> <a href='" . $user['nama'] .  ".php'><img src='includes/" . $user['gambar'] . "' alt='Gambar Dorayaki' width='200' height='200'> <div class='deskripsi'> <p>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p>Harga: " . $user['harga'] . "</p><p>Stok :" . $user['stok'] . "</p></div></a></div></div>";
+                }
 
                 echo'</div>
                 </div>';
