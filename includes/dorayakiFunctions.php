@@ -55,27 +55,27 @@
     }
 
     // menambah stok dorayaki sebanyak 1
-    function incrementStock($nama) {
-        if(dorayakiExist($nama)) {
+    function incrementStock($id) {
+        if(dorayakiExist($id)) {
             $query = "
             UPDATE dorayaki
             SET stok = stok + 1
-            WHERE nama = '$nama';";
+            WHERE id = '$id';";
             
             execute($query);
         }
     }
 
     // mengurangi stok dorayaki sebanyak 1
-    function decrementStock($nama) {
+    function decrementStock($id) {
         // cek stoknya ada ga
-        $stok = getStock($nama);
+        $stok = getStock($id);
 
         if($stok > 0) {
             $query = "
             UPDATE dorayaki
             SET stok = stok - 1
-            WHERE nama = '$nama';";
+            WHERE id = '$id';";
             
             execute($query);
         } else {
@@ -99,15 +99,15 @@
         }
     }
 
-    // ngecek apakah nama varian dorayaki eksis
-    function dorayakiExist($nama) {
+    // ngecek apakah id varian dorayaki eksis
+    function dorayakiExist($id) {
         global $db;
 
         $found = false;
         $query = "
         SELECT * 
         FROM dorayaki 
-        WHERE nama ='$nama';";
+        WHERE id ='$id';";
 
         $result = $db->query($query)->fetchArray();
         if($result) {
@@ -126,14 +126,14 @@
 
     // liat stok dorayaki berdasarkan nama
     // kalo return -99 berarti dorayaki tidak ditemukan
-    function getStock($nama) {
+    function getStock($id) {
         global $db;
         $stok = -99;
 
         $query = "
         SELECT stok
         FROM dorayaki
-        WHERE nama = '$nama';";
+        WHERE id = '$id';";
 
         $result = $db->query($query)->fetchArray();
 
@@ -163,45 +163,45 @@
     }
 
     // ganti stok dorayaki
-    function changeStock($nama, $stok) {
+    function changeStock($id, $stok) {
         // stok tidak bisa negatif
-        if(dorayakiExist($nama) && $stok>=0) {
+        if(dorayakiExist($id) && $stok>=0) {
             $query = "
             UPDATE dorayaki
             SET stok = '$stok'
-            WHERE nama = '$nama';";
+            WHERE id = '$id';";
             
             execute($query);
         } 
     }
 
     // menghapus varian dorayaki
-        function deleteVariant($nama) {
+        function deleteVariant($id) {
         $query = "
         DELETE FROM dorayaki 
-        WHERE nama = '$nama';";
+        WHERE id = '$id';";
 
         execute($query);
     }
 
     // menampilkan detail sebuah varian dorayaki
-    function displayDetail($nama) {
+    function displayDetail($id) {
         global $db;
         $query = "
-        SELECT * FROM dorayaki WHERE nama = '$nama';";
+        SELECT * FROM dorayaki WHERE id = '$id';";
         $result = $db->query($query);
         echo "<table>";
         while ($row=$result->fetchArray()) {
             echo "<tr><td>" . $row['nama'] . "</td><td>" . $row['deskripsi'] . "</td><td>" . $row['harga'] . "</td><td>" . $row['stok'] . "</td><td>" . "<img src='" . $row['gambar'] . "' width='30' height='30'> </td></tr><br>";
             if($_SESSION['level']=='user') {
-                buyForUser($row,$row['nama']);
+                buyForUser($row);
             }
         }
         echo "</table>";
     }
 
-    function buyForUser($row, $nama) {
-        echo "<form action='../beliDorayaki.php?id=". $row['id']."' method='post'><button type='submit' name='beli' value='" . $nama . "'>beli</button></form>";
+    function buyForUser($row) {
+        echo "<form action='../beliDorayaki.php?id=". $row['id']."' method='post'><button type='submit' name='beli' value='" .  $row['id'] . "'>beli</button></form>";
     }
 
     // menampilkan seluruh varian dorayaki
@@ -215,15 +215,15 @@
         while ($row=$result->fetchArray()) {
             echo "<tr><td>" . $row['nama'];
             if($_SESSION['level']=='admin') {
-                deleteForAdmin($row,$row['nama']);
+                deleteForAdmin($row);
             }
-            echo "<form action='displayVariant.inc.php?id=". $row['id']."' method='post'><button type='submit' name='detail' value='" . $row['nama'] . "'>detail</button> </form> </td></tr> <br>";      
+            echo "<form action='displayVariant.inc.php?id=". $row['id']."' method='post'><button type='submit' name='detail' value='" . $row['id'] . "'>detail</button> </form> </td></tr> <br>";      
         }
         echo "</table>";
     }
 
-    function deleteForAdmin($row,$nama) {
-        echo"<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $nama . "'>delete</button> </form>";
+    function deleteForAdmin($row) {
+        echo"<form action='deleteVariant.inc.php' method='post'><button type='submit' name='delete' value='" . $row['id'] . "'>delete</button> </form>";
     }
 
     function getInfoById($id) {

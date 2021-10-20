@@ -7,9 +7,9 @@ include_once "dorayakiFunctions.php";
 $db = new MyDB();
 
 if(isset($_POST["delete"])) {
-    $name = $_POST["delete"];
+    $id = $_POST["delete"];
     
-    deleteVariant($name);
+    deleteVariant($id);
 } 
 else {
 }

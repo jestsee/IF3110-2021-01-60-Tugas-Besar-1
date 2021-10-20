@@ -7,9 +7,9 @@ include_once "dorayakiFunctions.php";
 $db = new MyDB();
 
 if(isset($_POST["detail"])) {
-    $name = $_POST["detail"];
+    $id = $_POST["detail"];
     
-    displayDetail($name);
+    displayDetail($id);
 } 
 else {
 }
