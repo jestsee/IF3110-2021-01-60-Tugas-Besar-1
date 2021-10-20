@@ -7,11 +7,11 @@
     }
     $db = new MyDB(); //harus ada ini di setiap fungsi
 
-    if(!$db) {
-        echo $db->lastErrorMsg();
-    } else {
-        echo "Opened database successfully<br>";
-    }
+    // if(!$db) {
+    //     echo $db->lastErrorMsg();
+    // } else {
+    //     echo "Opened database successfully<br>";
+    // }
 
     $drop = "DROP TABLE user;";
 
@@ -30,11 +30,11 @@
     function execute($query) {
         global $db;
         $ret = $db->exec($query);
-        if(!$ret){
-            echo $db->lastErrorMsg();
-        } else {
-            echo "Successfully executed<br>";
-        }
+        // if(!$ret){
+        //     echo $db->lastErrorMsg();
+        // } else {
+        //     echo "Successfully executed<br>";
+        // }
         // $db->close();
     }
 
@@ -48,4 +48,28 @@
     }
 
     // addUser("xx@gmail.com", "xx", "x4x4", 1);
-    $db->close(); 
+    function isUsernameExist($username) {
+        global $db;
+
+        $query = "
+        SELECT * FROM user
+        WHERE username = '$username';
+        ";
+
+        $result = $db->query($query)->fetchArray();
+        $found = false;
+
+        if($result) {
+            $found = true;
+        }
+
+        return $found;
+    }
+
+    // if (isUsernameExist('lolo')) {
+    //     echo 'exist';
+    // } else {
+    //     echo 'not found';
+    // }
+
+    // $db->close(); 

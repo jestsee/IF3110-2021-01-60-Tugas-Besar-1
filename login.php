@@ -39,8 +39,8 @@
             <link href="css/login.css" rel="stylesheet">
             <h2>Login</h2>
             <form action="includes/signin.inc.php" method="post">
-                <input type="text" name="usn" placeholder="Username...">
-                <input type="password" name="pw" placeholder="Password...">
+                <input type="text" name="usn" placeholder="Username..." required>
+                <input type="password" name="pw" placeholder="Password..." required>
                 <button type="submit" name="submit">login</button>
                 <br><br>
                 <button type="submitadmin" name="submitadmin">login as admin</button>
