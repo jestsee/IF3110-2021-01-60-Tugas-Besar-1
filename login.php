@@ -31,20 +31,22 @@
     }
 ?>
 <div class="split left">
-    <h1></h1>
+    <img src="css/logos1.jpg" width="200" height="100">
 </div>
 <div class="split right">
-    <div class="centered">
-        <section class="signin-form">
-            <link href="css/login.css" rel="stylesheet">
-            <h2>Login</h2>
-            <form action="includes/signin.inc.php" method="post">
-                <input type="text" name="usn" placeholder="Username..." required>
-                <input type="password" name="pw" placeholder="Password..." required>
-                <button type="submit" name="submit">login</button>
-                <br><br>
-            </form>
+    <img src="css/logos1.jpg" width="200" height="100">
+        <div class="centered">
+            <section class="signin-form">
+                <link href="css/login.css" rel="stylesheet">
+                <h2>Login</h2>
+                <form action="includes/signin.inc.php" method="post">
+                    <input type="text" name="usn" placeholder="Username..." required>
+                    <input type="password" name="pw" placeholder="Password..." required>
+                    <button type="submit" name="submit">login</button>
+                    <br><br>
+                </form>
+                <a href="register.php">Don't have account? Register here!</a>
 
-        </section>
+            </section>
+        </div>
     </div>
-</div>

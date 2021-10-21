@@ -21,9 +21,26 @@ body {
     height: 97%;
 }
 
+img{
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    
+}
+
+.left img{
+    margin-top: 150px;
+}
+
 .right{
     right: 0;
     background-color:bisque;
+}
+
+.right img{
+    opacity: 0;
 }
 
 .centered{
@@ -35,6 +52,15 @@ body {
     border-radius: 10px;
     background-color: peachpuff;
     padding: 20px 30px;
+}
+
+.centered a{
+    text-decoration: none;
+    color:midnightblue;
+}
+
+.centered a:hover{
+    color: red;
 }
 
 input[type=text]{
@@ -93,7 +119,10 @@ button[type=submit]:hover{
     border-radius: 7px 7px 7px 7px;
 }
 
-@media only screen and (max-width: 990px){
+@media only screen and (max-width: 700px){
+    .right img{
+        opacity: 1;
+    }
     .split{
         width: 100%;
         background-image: url('backgroundindex.png');
