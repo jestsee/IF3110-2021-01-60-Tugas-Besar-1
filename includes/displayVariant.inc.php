@@ -8,9 +8,11 @@ $db = new MyDB();
 
 if(isset($_POST["detail"])) {
     $id = $_POST["detail"];
-    
     displayDetail($id);
-} 
-else {
+} elseif(isset($_GET["id"])){
+    $id = $_GET["id"];
+    displayDetail($id);
+} else {
+    
 }
 ?>

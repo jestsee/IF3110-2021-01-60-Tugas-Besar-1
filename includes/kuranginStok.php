@@ -2,11 +2,14 @@
 require_once 'dorayakiFunctions.php';
 require_once 'functions.inc.php';
 
+session_start();
+checkCookie(); // cek masih login ga
+
 $id = $_GET['id'];
 $stokInput = $_POST["stok"];
 echo $stokInput;
 
-if(isset($_POST["beli"])) {
+if(isset($_POST["beli"]) && isset($_SESSION['login'])) {
     // harus tetep masukin parameter id nya ke url
     if (empty($stokInput)) {
         header("location: ../beliDorayaki.php?id=".$id);
@@ -21,7 +24,7 @@ if(isset($_POST["beli"])) {
 
 }
 
-elseif (isset($_POST["ubah"])) {
+elseif (isset($_POST["ubah"]) && isset($_SESSION['login'])) {
     // harus tetep masukin parameter id nya ke url
     if (empty($stokInput)) {
         header("location: ../beliDorayaki.php?id=".$id);
@@ -36,7 +39,7 @@ elseif (isset($_POST["ubah"])) {
 
 }
 
-// else {
-//     header("location: ../beliDorayaki.php?id=".$id);
-//     exit();
-// }
+else {
+    header("location: ../beliDorayaki.php?id=".$id);
+    exit();
+}

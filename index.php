@@ -56,12 +56,14 @@
                 //panggil fungsi yang nampilin dorayaki
                 //getsepuluhdorayaki();
                 global $db;
-                $query = "SELECT * FROM dorayaki LIMIT 10;";
+                $query = "SELECT * FROM dorayaki 
+                ORDER BY terjual DESC
+                LIMIT 10;";
                 $result = $db->query($query);
 
                 while ($user=$result->fetchArray()){
                     // TODO: make image clickable with the existing function
-                    echo "<div class='responsif'> <div class='gambar'> <a href='" . $user['nama'] .  ".php'><img src='includes/" . $user['gambar'] . "' alt='Gambar Dorayaki' width='200' height='200'> <div class='deskripsi'> <p>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p>Harga: " . $user['harga'] . "</p><p>Stok :" . $user['stok'] . "</p></div></a></div></div>";
+                    echo "<div class='responsif'> <div class='gambar'> <a href='includes/displayVariant.inc.php?id=" . $user['id'] .  ".'><img src='includes/" . $user['gambar'] . "' alt='Gambar Dorayaki' width='200' height='200'> <div class='deskripsi'> <p>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p>Harga: " . $user['harga'] . "</p><p>Stok :" . $user['stok'] . "</p></div></a></div></div>";
                 }
 
                 echo'</div>
