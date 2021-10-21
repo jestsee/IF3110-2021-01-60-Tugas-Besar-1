@@ -62,16 +62,13 @@ li {
     display: block;
     color: black;
     text-align: center;
-    padding: 10px 5px;
     text-decoration: none;
-    margin-top: 5px;
 }
 
 .navitem a:hover{
     color: rgb(190, 142, 70);
     border-radius: 5px;
     margin: 0px;
-    margin-top: 5px;
 }
 
 
@@ -117,7 +114,7 @@ li {
 }
 
 .navitem button{
-    margin-top: 10px;
+    margin-top: -5px;
     font-size: 20px;
     border-radius: 5px;
     width: 100%;
