@@ -12,6 +12,7 @@ checkCookie(); // cek masih login ga
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/variantstylesheet.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -27,14 +28,26 @@ checkCookie(); // cek masih login ga
     (v) stok baru berkurang setelah pencet tombol beli
     ( ) nanganin kasus kalo statechange ga ready
     -->
-
+    <?php 
+        echo "<div class='centered'>";
+        if(isset($_POST["nama"])) {
+            $nama = $_POST["nama"];
+            echo "<p>" . $nama . "</p>";
+        }
+        if(isset($_POST["foto"])) {
+            $foto = $_POST["foto"];
+            echo "<div><img src='includes/" . $foto . "' width='100' height='50'>";
+        }
+    ?>
     <form id="punya-user" method="post">
         <input type="number" name="stok" min="1" max="50" id="stok">
+        <div></div>
         <button type="submit" name="beli" id="tombol-beli">Beli</button>
     </form>
 
     <form id="punya-admin" method="post">
         <input type="number" name="stok" min="1" max="50" id="stok-admin">
+        <div></div>
         <button type="submit" name="ubah" id="tombol-ubah">Ubah</button>
     </form>
 
@@ -44,7 +57,7 @@ checkCookie(); // cek masih login ga
         <!-- tampilin harga dan stok secara real time disini -->
         <p>Stok: <span id="stoknya"></span></p>
         <p>Terjual: <span id="terjual"></span></p>
-        <p id="p-harga">Total harga: <span id="harga"></span></p>
+        <p id="p-harga">Total harga: <span id="harga"></span></p></div>
 
         <?php 
         if( isset($_SESSION['level'])) {
