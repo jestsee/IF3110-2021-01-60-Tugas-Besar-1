@@ -55,35 +55,6 @@
         execute($query);
     }
 
-    // menambah stok dorayaki sebanyak 1
-    function incrementStock($id) {
-        if(dorayakiExist($id)) {
-            $query = "
-            UPDATE dorayaki
-            SET stok = stok + 1
-            WHERE id = '$id';";
-            
-            execute($query);
-        }
-    }
-
-    // mengurangi stok dorayaki sebanyak 1
-    function decrementStock($id) {
-        // cek stoknya ada ga
-        $stok = getStock($id);
-
-        if($stok > 0) {
-            $query = "
-            UPDATE dorayaki
-            SET stok = stok - 1
-            WHERE id = '$id';";
-            
-            execute($query);
-        } else {
-            echo 'stoknya nga ada';
-        }
-    }
-
     function beliDorayaki($id, $jumlah) {
         $stok = getStockbyId($id);
 
@@ -253,6 +224,41 @@
         while ($user=$result->fetchArray()){
             echo "<div class='responsif'> <div class='gambar'> <a href='" . $user['nama'] .  ".php'><img src=' " . $user['gambar'] . "' alt='Gambar Dorayaki' width='200' height='200'> <div class='deskripsi'> <p>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p>Harga: " . $user['harga'] . "</p><p>Stok :" . $user['stok'] . "</p></div></a></div></div>";
         }
+    }
+
+    // nama dorayaki berdasarkan id
+    function getNamabyId($id) {
+        global $db;
+
+        $query = "
+        SELECT nama
+        FROM dorayaki
+        WHERE id = '$id';";
+
+        $result = $db->query($query)->fetchArray();
+
+        if($result) {
+            $nama = $result['nama'];
+        }
+
+        return $nama;
+    }
+
+    function getHargabyId($id) {
+        global $db;
+
+        $query = "
+        SELECT harga
+        FROM dorayaki
+        WHERE id = '$id';";
+
+        $result = $db->query($query)->fetchArray();
+
+        if($result) {
+            $nama = $result['harga'];
+        }
+
+        return $nama;
     }
     //getsepuluhdorayaki();
 

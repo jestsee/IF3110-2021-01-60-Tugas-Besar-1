@@ -1,17 +1,5 @@
 <?php
-    // OPEN DATABASE
-    class MyDB extends SQLite3 {
-        function __construct() {
-            $this->open('user.db');
-        }
-    }
-    $db = new MyDB(); //harus ada ini di setiap fungsi
-
-    // if(!$db) {
-    //     echo $db->lastErrorMsg();
-    // } else {
-    //     echo "Opened database successfully<br>";
-    // }
+    require_once 'dorayakiFunctions.php';
 
     $drop = "DROP TABLE user;";
 
@@ -27,17 +15,6 @@
     // execute($drop);
     execute($sql);
 
-    function execute($query) {
-        global $db;
-        $ret = $db->exec($query);
-        // if(!$ret){
-        //     echo $db->lastErrorMsg();
-        // } else {
-        //     echo "Successfully executed<br>";
-        // }
-        // $db->close();
-    }
-
     // menambah user setelah register(?)
     function addUser($email, $username, $password, $is_admin) {
         $query ="
@@ -47,7 +24,7 @@
         execute($query);
     }
 
-    // addUser("xx@gmail.com", "xx", "x4x4", 1);
+    addUser("xx@gmail.com", "xx", "x4x4", 1);
     function isUsernameExist($username) {
         global $db;
 

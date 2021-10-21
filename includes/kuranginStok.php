@@ -1,6 +1,7 @@
 <?php
 require_once 'dorayakiFunctions.php';
 require_once 'functions.inc.php';
+require_once 'riwayat.php';
 
 session_start();
 checkCookie(); // cek masih login ga
@@ -18,10 +19,11 @@ if(isset($_POST["beli"]) && isset($_SESSION['login'])) {
 
     // kurangin stok di database by id
     beliDorayaki($id,$stokInput);
+    $id_user = $_COOKIE['id'];
+    beli($id_user, $id, $stokInput);
 
     // kasih pesan pembelian berhasil dilakukan di halaman berikutnya
     header("location: ../index.php?pembelian=true");
-
 }
 
 elseif (isset($_POST["ubah"]) && isset($_SESSION['login'])) {
@@ -33,6 +35,8 @@ elseif (isset($_POST["ubah"]) && isset($_SESSION['login'])) {
 
     // replace stok dorayaki
     changeStock($id, $stokInput);
+    $id_user = $_COOKIE['id'];
+    ubahStok($id_user, $id, $stokInput);
 
     // kasih pesan stok berhasil diubah di halaman berikutnya
     header("location: ../index.php?ubah=true");
