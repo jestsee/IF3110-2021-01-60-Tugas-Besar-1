@@ -1,12 +1,12 @@
 <?php
+require_once 'dorayakiFunctions.php';
+require_once 'functions.inc.php';
+
 $id = $_GET['id'];
+$stokInput = $_POST["stok"];
+echo $stokInput;
 
 if(isset($_POST["beli"])) {
-    $stokInput = $_POST["stok"];
-
-    require_once 'dorayakiFunctions.php';
-    require_once 'functions.inc.php';
-
     // harus tetep masukin parameter id nya ke url
     if (empty($stokInput)) {
         header("location: ../beliDorayaki.php?id=".$id);
@@ -15,14 +15,28 @@ if(isset($_POST["beli"])) {
 
     // kurangin stok di database by id
     beliDorayaki($id,$stokInput);
-    echo 'beli oi'. $id. $stokInput;
 
     // kasih pesan pembelian berhasil dilakukan di halaman berikutnya
-    // header("location: ../index.php?pembelian=true");
+    header("location: ../index.php?pembelian=true");
 
 }
 
-else {
-    header("location: ../beliDorayaki.php?id=".$id);
-    exit();
+elseif (isset($_POST["ubah"])) {
+    // harus tetep masukin parameter id nya ke url
+    if (empty($stokInput)) {
+        header("location: ../beliDorayaki.php?id=".$id);
+        exit();
+    }
+
+    // replace stok dorayaki
+    changeStock($id, $stokInput);
+
+    // kasih pesan stok berhasil diubah di halaman berikutnya
+    header("location: ../index.php?ubah=true");
+
 }
+
+// else {
+//     header("location: ../beliDorayaki.php?id=".$id);
+//     exit();
+// }

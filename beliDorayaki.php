@@ -1,3 +1,11 @@
+<?php
+
+require_once 'includes/functions.inc.php';
+
+session_start();
+checkCookie(); // cek masih login ga
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,18 +28,38 @@
     ( ) nanganin kasus kalo statechange ga ready
     -->
 
-    <form id="id-produk" method="post">
+    <form id="punya-user" method="post">
         <input type="number" name="stok" min="1" max="50" id="stok">
         <button type="submit" name="beli" id="tombol-beli">Beli</button>
+    </form>
+
+    <form id="punya-admin" method="post">
+        <input type="number" name="stok" min="1" max="50" id="stok-admin">
+        <button type="submit" name="ubah" id="tombol-ubah">Ubah</button>
     </form>
 
     <!-- tempat datanya berubah -->
     <div id="container">
 
-        <!-- tampilin harga secara real time disini -->
-        <p>Harga: <span id="harga"></span></p>
-        <p>Terjual: <span id="terjual"></span></p>
+        <!-- tampilin harga dan stok secara real time disini -->
         <p>Stok: <span id="stoknya"></span></p>
+        <p>Terjual: <span id="terjual"></span></p>
+        <p id="p-harga">Total harga: <span id="harga"></span></p>
+
+        <?php 
+        if( isset($_SESSION['level'])) {
+            if($_SESSION['level']=='admin' ) {
+                // hide harga dan tombol beli
+                echo "<script src='includes/bedainTampilan.js'></script>";
+                echo "<script>hideAttributebyId('p-harga')</script>";
+                echo "<script>hideAttributebyId('punya-user')</script>";
+            } elseif ($_SESSION['level']=='user') {
+                // hide tombol ubah
+                echo "<script src='includes/bedainTampilan.js'></script>";
+                echo "<script>hideAttributebyId('punya-admin')</script>";
+            }
+        }
+        ?>
 
     </div>
 
@@ -40,7 +68,8 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const id = urlParams.get('id')
-      document.getElementById('id-produk').action = "includes/kuranginStok.php?id=" + id;
+      document.getElementById('punya-admin').action = "includes/kuranginStok.php?id=" + id;
+      document.getElementById('punya-user').action = "includes/kuranginStok.php?id=" + id;
     </script>
 
 </body>
