@@ -58,7 +58,7 @@
     function beliDorayaki($id, $jumlah) {
         $stok = getStockbyId($id);
 
-        if( $stok > $jumlah ) {
+        if( $stok >= $jumlah ) {
             $query = "
             UPDATE dorayaki
             SET 
@@ -215,6 +215,16 @@
         }
 
         return array($nama, $stok, $terjual, $harga);
+    }
+
+    function getDetailbyId($id) {
+        global $db;
+        $query = "SELECT * FROM dorayaki WHERE id = '$id';";
+        $result = $db->query($query);
+
+        $row=$result->fetchArray();
+
+        return $row;
     }
 
     //nampilin 10 dorayaki pertama buat dashboard
