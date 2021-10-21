@@ -42,6 +42,7 @@
             <li class='navitemleft'><a href='#home'><img src='logos.png' width='150' height='35' style='padding: 0; margin: 0;'></a></li>
             <li class='navitemsearch'><input type='text' placeholder='Search here :D'></li>
             <li class='navitemsearch'><button type='submit' name='submit'>Search</button>
+            <li class='navitem'><a href=\"logout.php\">Log Out</a></li>
         </ul>
         </div>";
 
@@ -72,7 +73,7 @@
                 echo "<div class='split right'><div class='centered'><form action= 'insertVariantPage.php' method='post' enctype='multipart/form-data'><button type='submit' name='submit'>Insert New Variant</button></form></div></div>";
             }
         }
-        echo "<br><div class='logout'><a href=\"logout.php\">logout disini</a></div>";
+        //echo "<br><div class='logout'><a href=\"logout.php\">logout disini</a></div>";
     } else {
         echo "<div class='belomlogin'><h1>Please Login First</h1>";
         echo "<br><a href='login.php'>login here</a></div>";
