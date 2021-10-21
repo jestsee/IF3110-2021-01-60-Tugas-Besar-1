@@ -1,20 +1,8 @@
 <?php
-echo('<link rel="stylesheet" href="../css/dashboardstylesheet.css" type="text/css">'); 
+// echo('<link rel="stylesheet" href="../css/dashboardstylesheet.css" type="text/css">'); 
 session_start();
 
 include_once "dorayakiFunctions.php";
-
-// $db = new MyDB();
-
-if(isset($_POST["detail"])) {
-    $id = $_POST["detail"];
-    displayDetail($id);
-} elseif(isset($_GET["id"])){
-    $id = $_GET["id"];
-    displayDetail($id);
-} else {
-    
-}
 ?>
 
 <html lang="en">
@@ -38,7 +26,11 @@ if(isset($_POST["detail"])) {
       <div class="product-price-btn">
         <p id="harga"><span></span>Rp</p>
         <form id="cart" method="POST">
-            <button type="submit" name="submit">Beli</button>
+            <button id="tombol-opsi" type="submit" name="submit">Beli</button>
+            <?php echo buyForUser($_GET['id']); ?>
+        </form>
+        <form action="deleteVariant.inc.php" method="POST" id="delete" >
+            <button id="tombol-delete" type="submit" name="delete" value=<?php echo $_GET['id']; ?>>hapus</button>
         </form>
       </div>
     </div>
@@ -51,7 +43,7 @@ if(isset($_POST["detail"])) {
     //   console.log(id);
     //   bookDetails(books[id]);
       
-
+      
       document.getElementById('cart').action = "../beliDorayaki.php?id=" + id;
       <?php
         $id = $_GET['id'];
@@ -66,6 +58,24 @@ if(isset($_POST["detail"])) {
       ?>
   </script>
 
+  <?php
+    if(isset($_GET["id"])){
+        $id = $_GET["id"];
+        
+        if( isset($_SESSION['level']) ) {
+          $level = $_SESSION['level'];
+          if($level == 'admin') {
+            echo "<script src='display.js'></script>";
+            echo "<script>attribute('tombol-opsi','ubah');</script>";
+          } elseif ($level == 'user') {
+            echo "<script src='display.js'></script>";
+            echo "<script>hilanginDelete();</script>";
+          }
+        }
+    } else {
+        
+    }
+    ?>
 </body>
 
 </html>

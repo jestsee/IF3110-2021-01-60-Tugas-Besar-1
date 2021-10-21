@@ -174,8 +174,10 @@
         echo "</table>";
     }
 
-    function buyForUser($row) {
-        echo "<form action='../beliDorayaki.php?id=". $row['id']."' method='post'><button type='submit' name='beli' value='" .  $row['id'] . "'>beli</button><input type='hidden' name='foto' value='" . $row['gambar'] . "'></input> 
+    function buyForUser($id) {
+        $row = getDetailbyId($id);
+
+        echo "<input type='hidden' name='foto' value='" . $row['gambar'] . "'></input> 
         <input type='hidden' name='nama' value='" . $row['nama'] . "'></input>
         </form>";
     }

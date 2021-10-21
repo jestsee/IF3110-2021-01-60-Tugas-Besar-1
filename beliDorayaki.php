@@ -40,14 +40,12 @@ checkCookie(); // cek masih login ga
         }
     ?>
     <form id="punya-user" method="post">
-        <input type="number" name="stok" min="1" max="50" id="stok">
-        <div></div>
+        <input type="number" name="stok" min="0" max="100" id="stok">
         <button type="submit" name="beli" id="tombol-beli">Beli</button>
     </form>
 
     <form id="punya-admin" method="post">
-        <input type="number" name="stok" min="1" max="50" id="stok-admin">
-        <div></div>
+        <input type="number" name="stok" min="0" max="100" id="stok-admin">
         <button type="submit" name="ubah" id="tombol-ubah">Ubah</button>
     </form>
 
