@@ -38,8 +38,8 @@
             
             // create cookie
             $_SESSION['login'] = true;
-            setcookie('id', $row['id'], time()+60,'/');
-            setcookie('key', hash('sha256', $newusername), time()+60,'/');
+            setcookie('id', $row['id'], time()+300,'/');
+            setcookie('key', hash('sha256', $newusername), time()+300,'/');
             $_SESSION['level'] = 'user';
             header("location: ../index.php");
             

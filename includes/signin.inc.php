@@ -33,8 +33,8 @@ if(isset($_POST["submit"])) {
     if($verify) {
         // buat cookie berlakunya semenit
         $_SESSION['login'] = true;
-        setcookie('id', $row['id'], time()+60,'/');
-        setcookie('key', hash('sha256', $usn), time()+60,'/');
+        setcookie('id', $row['id'], time()+300,'/');
+        setcookie('key', hash('sha256', $usn), time()+300,'/');
         if($row['is_admin']==1) {
             $_SESSION['level'] = 'admin';
             header("location: ../admin.php");
@@ -58,22 +58,6 @@ if(isset($_POST["submit"])) {
 
     // header("location: ../loginuser.php");
 
-} 
-
-// TODO: ADMIN
-elseif(isset($_POST["submitadmin"])) {
-    $usn = $_POST["usn"];
-    $pw = $_POST["pw"];
-
-    require_once 'functions.inc.php';
-
-    // kalo salah satu kotak kosong
-    if(emptyInputSignIn($usn, $pw) !== false) { // TODO : nanti fungsinya dibikin
-        header("location: ../login.php?error=emptyinput");
-        exit();
-    }
-    
-    // header("location: ../loginadmin.php");
 } 
 
 else {

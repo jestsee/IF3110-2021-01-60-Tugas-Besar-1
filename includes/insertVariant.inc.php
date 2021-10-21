@@ -30,7 +30,8 @@ if(isset($_POST["submit"])) {
     $img = "dorayakiImages/"  .  basename( $_FILES['fileToUpload']['name']);
     // echo($img);
     // echo("<img src='" . $img . "' width='500' height='600'>" );
-    insertVariant($name, $desc, $price, $stock, $img);
+    // diasumsiin kalo insert tuh terjualnya 0
+    insertVariant($name, $desc, $price, $stock, 0, $img);
     header("location: ../index.php?insert=success");
 } 
 ?>

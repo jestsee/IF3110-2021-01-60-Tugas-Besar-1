@@ -24,6 +24,7 @@
         deskripsi TEXT,
         harga INT,
         stok INT,
+        terjual INT,
         gambar TEXT,
         UNIQUE (nama, deskripsi, harga, gambar)
     );";
@@ -46,10 +47,10 @@
     }
 
     // menambah varian dorayaki baru
-    function insertVariant($nama, $deskripsi, $harga, $stok, $gambar) {
+    function insertVariant($nama, $deskripsi, $harga, $stok, $terjual,$gambar) {
         $query ="
-        INSERT INTO dorayaki(nama, deskripsi, harga, stok, gambar)
-        VALUES ('$nama', '$deskripsi', $harga, $stok, '$gambar');";
+        INSERT INTO dorayaki(nama, deskripsi, harga, stok, terjual, gambar)
+        VALUES ('$nama', '$deskripsi', $harga, $stok, $terjual, '$gambar');";
         
         execute($query);
     }
@@ -89,7 +90,9 @@
         if( $stok > $jumlah ) {
             $query = "
             UPDATE dorayaki
-            SET stok = stok - '$jumlah'
+            SET 
+            stok = stok - '$jumlah',
+            terjual = terjual + '$jumlah'
             WHERE id = '$id';
             ";
 
@@ -176,7 +179,7 @@
     }
 
     // menghapus varian dorayaki
-        function deleteVariant($id) {
+    function deleteVariant($id) {
         $query = "
         DELETE FROM dorayaki 
         WHERE id = '$id';";
@@ -234,10 +237,11 @@
         while ($row=$result->fetchArray()) {
             $nama = $row['nama'];
             $stok = $row['stok']; 
+            $terjual = $row['terjual'];
             $harga = $row['harga'];
         }
 
-        return array($nama, $stok, $harga);
+        return array($nama, $stok, $terjual, $harga);
     }
 
     //nampilin 10 dorayaki pertama buat dashboard
@@ -253,6 +257,7 @@
     //getsepuluhdorayaki();
 
     // DRIVER
+    // insertVariant('dorayaki','dora',3000,7,0,'dorayakiImages/Dorayaki_001.jpg');
     // insertVariant('dora','boots',5000, 5, 'pisang');
     // insertVariant('dori','boots',7000, 5, 'pisang');
     // print getStock('dora');

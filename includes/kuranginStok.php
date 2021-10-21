@@ -15,9 +15,10 @@ if(isset($_POST["beli"])) {
 
     // kurangin stok di database by id
     beliDorayaki($id,$stokInput);
+    echo 'beli oi'. $id. $stokInput;
 
     // kasih pesan pembelian berhasil dilakukan di halaman berikutnya
-    header("location: ../index.php?pembelian=true");
+    // header("location: ../index.php?pembelian=true");
 
 }
 

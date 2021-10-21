@@ -2,6 +2,7 @@
 var stokInput = document.getElementById('stok');
 var tombolBeli = document.getElementById('tombol-beli');
 var harga = document.getElementById('harga');
+var terjual = document.getElementById('terjual');
 
 // sementara event nya pake change atau input (input bs cover semua)
 // bisa jadi template buat ajax di fungsi lain
@@ -21,8 +22,9 @@ stokInput.addEventListener('input', setInterval(function() {
             // set max stok
             obj = JSON.parse(xhr.responseText);
             stokInput.setAttribute("max",obj[1])
-            harga.innerHTML = obj[2] * stokInput.value;
+            harga.innerHTML = obj[3] * stokInput.value;
             stoknya.innerHTML = obj[1];
+            terjual.innerHTML = obj[2];
             // debug
             // container.innerHTML = stokInput.value;
 
