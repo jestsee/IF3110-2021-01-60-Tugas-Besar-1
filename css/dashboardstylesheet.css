@@ -337,3 +337,14 @@ body{
     }
     
 }
+
+#nama {
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: bolder;
+    font-family: 'Raleway', sans-serif;
+}
+
+#harga {
+    font-family: 'Raleway', sans-serif;
+}
