@@ -2,6 +2,7 @@
 
 function userHeader($u_id) {
     echo "
+    <link href='css/dashboardstylesheet.css' rel='stylesheet'>
     <div class='header'>
         <ul>
             <li class='navitemleft'><a href=\"index.php\"><img src='css/logos2.jpg' width='150' height='50' style='padding: 0; margin: 0;'></a></li>
@@ -17,6 +18,7 @@ function userHeader($u_id) {
 
 function adminHeader($u_id) {
     echo "
+    <link href='css/dashboardstylesheet.css' rel='stylesheet'>
     <div class='header'>
         <ul>
             <li class='navitemleft'><a href=\"index.php\"><img src='css/logos2.jpg' width='150' height='50' style='padding: 0; margin: 0;'></a></li>
