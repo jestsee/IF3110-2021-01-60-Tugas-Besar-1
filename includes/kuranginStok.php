@@ -28,7 +28,7 @@ if(isset($_POST["beli"]) && isset($_SESSION['login'])) {
 
 elseif (isset($_POST["ubah"]) && isset($_SESSION['login'])) {
     // harus tetep masukin parameter id nya ke url
-    if (empty($stokInput)) {
+    if (empty($stokInput) && $stokInput!=0) {
         header("location: ../beliDorayaki.php?id=".$id);
         exit();
     }
