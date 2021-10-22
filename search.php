@@ -43,6 +43,32 @@
     }
     if($_SERVER['REQUEST_METHOD']=='POST') {
         $cari=$_POST['cari'];
+        $limit = 3;
+        $queryAll = "SELECT * FROM dorayaki WHERE nama LIKE '%$cari%'";
+        $resultAll = $db->query($queryAll);
+        $count = 0;
+        while ($user=$resultAll->fetchArray()){
+            $count = $count + 1;
+        }
+        $countPage = ceil($count/$limit);
+        if(isset($_POST['Previous']) || isset($_POST['Next']) || isset($_POST['First']) || isset($_POST['Last'])) {
+            echo "<div class='header'><ul>
+            <li class='navitemleft'><a href=\"index.php\"><img src='css/logos2.jpg' width='150' height='50' style='padding: 0; margin: 0;'></a></li>
+            <form action='search.php' method='post'><li class='navitemsearch'><input type='text' name='cari' placeholder='Search here :D'></li>
+            <li class='navitemsearch'><button type='submit' name='submit'>Search</button></li></form>";    
+            if($_SESSION['level']=='user') {
+                echo "<li class='navitem'><a href=\"logout.php\">Log Out</a></li>
+                </ul>
+                </div>";
+            }
+            else if ($_SESSION['level']=='admin') {
+                echo"<div class='kanan'>";
+                echo "<li class='navitem'><a href=\"logout.php\">Log Out</a></li>";
+                echo "<li class='navitem'><form action= 'insertVariantPage.php' method='post' enctype='multipart/form-data'><button type='submit' name='submit'>Insert New Variant</button></form></li>
+                </div>
+                </ul>
+                </div>";
+        }
         if (isset($_POST['Previous'])) {
             if($page <= 0) {
               $page = 1;
@@ -54,8 +80,19 @@
             echo "<br>";
             $page = $page + 1;
             gethasilsearch($cari,$page);
-        }        
+        }    
+        else if(isset($_POST['First'])) {
+            echo "<br>";
+            $page = 1;
+            gethasilsearch($cari,$page);
+        } 
+        else if(isset($_POST['Last'])) {
+            echo "<br>";
+            $page = $countPage;
+            gethasilsearch($cari,$page);
+        }     
     }
+}
     function gethasilsearch($cari,$page){
         global $db;
         $limit = 3;
@@ -79,19 +116,21 @@
         while ($user=$resultAll->fetchArray()){
             $count = $count + 1;
         }
-        echo "</table>";
-        echo "<br>";
         echo "<form action='" . $_SERVER['PHP_SELF'] . "?page={$page}'method='POST'>";
-        $countPage = $count/$limit;
+        $countPage = ceil($count/$limit);
+        echo "<br><br><br><br><br><br><br><br><br><br>";
+        echo "<div class='centered'>";
+        echo "<p> Page " . $page . "</p>";
         if($page>1) {
-            echo  "<button type='submit' name='Previous'>Previous</button>";
+            echo  "<button type='submit' name='First'><<</button>";
+            echo  "<button type='submit' name='Previous'>" . ($page - 1) ."</button>";
         }
         if($page<$countPage) {
-            echo  "<button type='submit' name='Next'>Next</button>";
+            echo  "<button type='submit' name='Next'>" . ($page + 1) ."</button>";
+            echo  "<button type='submit' name='Last'>>></button>";
         }
         echo  "<input type='hidden' name='cari' value='" . $cari ."'></button>";
         echo "</form>";
-      
         echo'</div>
         </div>';
     }
