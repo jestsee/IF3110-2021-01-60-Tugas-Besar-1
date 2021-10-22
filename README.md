@@ -65,18 +65,27 @@ Stand by Dorayaki merupakan sebuah aplikasi web dimana pengguna dapat membeli do
 
 ## Pembagian tugas
 * Server side
- Login 
- Registrasi 
- Search 
- Dashboard 
- Pembelian 
- Pengubahan stok 
- Penambahan varian
- Detail varian
- Riwayat
+ Login: 13519011, 13519047
+ Registrasi: 13519213, 13519011
+ Search: 13519213, 13519047
+ Dashboard: 13519011, 13519213, 13519047
+ Pembelian: 13519011
+ Pengubahan stok: 13519011
+ Penambahan varian: 13519047
+ Penghapusan varian: 13519047
+ Detail varian: 13519011
+ Riwayat: 13519011
  
 * Client side
-
+ Login: 13519213
+ Registrasi: 13519213
+ Search: 13519213, 13519047
+ Dashboard: 13519011, 13519213, 13519047
+ Pembelian: 13519011, 13519213
+ Pengubahan stok: 13519011
+ Penambahan varian: 13519213, 13519047
+ Detail varian: 13519011, 13519213
+ Riwayat: 13519011, 13519213
 
 ## Authors
 13519011 Jesica
