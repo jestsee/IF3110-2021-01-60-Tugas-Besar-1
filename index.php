@@ -2,6 +2,8 @@
 <link href="css/dashboardstylesheet.css" rel="stylesheet">
 <?php
 
+    require_once 'header.php';
+
     // INI SEMUA DITAROH DI HALAMAN DIRECT SETELAH SIGNIN.INC.PHP
     session_start();
     class MyDB extends SQLite3 {
@@ -37,13 +39,7 @@
 
     // cek udah login atau belom, kalo belom balik ke login page
     if(isset($_SESSION['login'])) {
-        echo "<div class='header'>
-        <ul>
-            <li class='navitemleft'><a href=\"index.php\"><img src='css/logos2.jpg' width='150' height='50' style='padding: 0; margin: 0;'></a></li>
-            <form action='search.php' method='post'><li class='navitemsearch'><input type='text' name='cari' placeholder='Search here :D'></li>
-            <li class='navitemsearch'><button type='submit' name='submit'>Search</button></li></form>";
 
-        //echo "met ya udh login<br>";
         if(isset($_SESSION['level'])) {
             global $db;
             $user_id = $_COOKIE['id'];
@@ -53,18 +49,11 @@
             ";
             $row = $db->query($username_query)->fetchArray();
             $u_id = $row['username'];
-
-            // diarahkan ke admin
+            
             if($_SESSION['level']=='user') {
-                echo "<li class='navitem'>$u_id</li>
-                <li class='navitem'><a href=\"logout.php\">logout</a></li>
-                </ul>
-                </div>";
-                // TODO : echo tempat" yang bisa dibuka user
+                userHeader($u_id);
                 echo'<div class="wrapper">
                 <div class="isi">';
-                //panggil fungsi yang nampilin dorayaki
-                //getsepuluhdorayaki();
                 
                 $query = "SELECT * FROM dorayaki 
                 ORDER BY terjual DESC
@@ -81,13 +70,7 @@
             }
             else if ($_SESSION['level']=='admin') {
                 //header("location: ../tugas-besar-1/includes/admin.php");
-                echo "<div class='kanan'>";
-                echo "<li class='navitem'>$u_id</li>
-                <li class='navitem'><a href=\"logout.php\">logout</a></li>";
-                echo "<li class='navitem'><form action= 'insertVariantPage.php' method='post' enctype='multipart/form-data'><button type='submit' name='submit'>Insert New Variant</button></form></li>
-                </div>
-                </ul>
-                </div>";
+                adminHeader($u_id);
 
                 echo'<div class="wrapper">
                 <div class="isi">';

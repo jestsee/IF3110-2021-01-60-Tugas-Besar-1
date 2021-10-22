@@ -38,7 +38,7 @@ function checkCookie1() {
 
         // cek session ada ga
         if(isset($_SESSION['login'])) {
-            header("location: logout.php");
+            header("location: ../logout.php");
         } // session ada, dibikin logout
     }
 

@@ -4,6 +4,7 @@ session_start();
 
 include_once "dorayakiFunctions.php";
 require_once 'functions.inc.php';
+require_once '../header.php';
 checkCookie1(); // cek masih login ga
 ?>
 
