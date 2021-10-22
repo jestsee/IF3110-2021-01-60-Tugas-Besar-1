@@ -5,3 +5,6 @@ function hideAttributebyId(id) {
     console.log('test');
 }
 
+function attribute(id, value) {
+    document.getElementById(id).innerHTML = value;
+}

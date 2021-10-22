@@ -24,7 +24,7 @@
         execute($query);
     }
 
-    addUser("xx@gmail.com", "xx", "x4x4", 1);
+    // addUser("xx@gmail.com", "xx", "x4x4", 1);
     function isUsernameExist($username) {
         global $db;
 
@@ -48,5 +48,4 @@
     // } else {
     //     echo 'not found';
     // }
-
     // $db->close(); 
