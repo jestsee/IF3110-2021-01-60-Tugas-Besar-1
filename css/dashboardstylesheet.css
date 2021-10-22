@@ -348,3 +348,10 @@ body{
 #harga {
     font-family: 'Raleway', sans-serif;
 }
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border-collapse: collapse;
+}
