@@ -3,6 +3,7 @@
 session_start();
 
 require_once 'includes/functions.inc.php';
+require_once 'header.php';
 
 checkCookie(); // cek masih login ga
 $id = $_COOKIE['id'];
@@ -22,7 +23,26 @@ $query = "
     ";
 $temp = $db->query($query);
 
+$query1 = "
+SELECT * FROM user
+WHERE id = '$id';
+";
+
+$result = $db->query($query1)->fetchArray();
+
+$u_id = $result['username'];
+
 // var_dump($row);
+if( isset($_SESSION['level']) ) {
+    $level = $_SESSION['level'];
+    if($level == 'admin') {
+
+        echo adminHeader1($u_id);
+
+    } elseif ($level == 'user') {
+        echo userHeader1($u_id);
+    }
+}
 ?>
 
 <table border="1" cellpadding="10" cellspacing="0">

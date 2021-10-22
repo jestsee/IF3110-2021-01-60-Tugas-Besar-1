@@ -5,6 +5,7 @@ session_start();
 include_once "dorayakiFunctions.php";
 require_once 'functions.inc.php';
 require_once '../header.php';
+require_once 'user.php';
 checkCookie1(); // cek masih login ga
 ?>
 
@@ -16,7 +17,19 @@ checkCookie1(); // cek masih login ga
 </head>
 
 <body>
-    
+  <?php
+  $u_id = getUsernameById($_COOKIE['id']);
+  if( isset($_SESSION['level']) ) {
+    $level = $_SESSION['level'];
+    if($level == 'admin') {
+
+      echo adminHeader1($u_id);
+  
+    } elseif ($level == 'user') {
+      echo userHeader1($u_id);
+    }
+  }
+  ?>
   <div class="wrapper">
     <div class="product-img">
       <img height="420" width="327" id="foto">

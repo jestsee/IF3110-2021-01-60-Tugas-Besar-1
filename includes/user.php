@@ -43,6 +43,20 @@
         return $found;
     }
 
+    function getUsernameById($id) {
+        global $db;
+
+        $query = "
+        SELECT * FROM user
+        WHERE id = '$id';
+        ";
+
+        $result = $db->query($query)->fetchArray();
+
+        return $result['username'];
+    }
+
+    // var_dump(getUsernameById(2));
     // if (isUsernameExist('lolo')) {
     //     echo 'exist';
     // } else {
