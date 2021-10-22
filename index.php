@@ -45,9 +45,19 @@
 
         //echo "met ya udh login<br>";
         if(isset($_SESSION['level'])) {
+            global $db;
+            $user_id = $_COOKIE['id'];
+            $username_query = "
+            SELECT username FROM user
+            WHERE id = $user_id;
+            ";
+            $row = $db->query($username_query)->fetchArray();
+            $u_id = $row['username'];
+
             // diarahkan ke admin
             if($_SESSION['level']=='user') {
-                echo "<li class='navitem'><a href=\"logout.php\">Log Out</a></li>
+                echo "<li class='navitem'>$u_id</li>
+                <li class='navitem'><a href=\"logout.php\">logout</a></li>
                 </ul>
                 </div>";
                 // TODO : echo tempat" yang bisa dibuka user
@@ -55,7 +65,7 @@
                 <div class="isi">';
                 //panggil fungsi yang nampilin dorayaki
                 //getsepuluhdorayaki();
-                global $db;
+                
                 $query = "SELECT * FROM dorayaki 
                 ORDER BY terjual DESC
                 LIMIT 10;";
@@ -72,7 +82,8 @@
             else if ($_SESSION['level']=='admin') {
                 //header("location: ../tugas-besar-1/includes/admin.php");
                 echo "<div class='kanan'>";
-                echo "<li class='navitem'><a href=\"logout.php\">Log Out</a></li>";
+                echo "<li class='navitem'>$u_id</li>
+                <li class='navitem'><a href=\"logout.php\">logout</a></li>";
                 echo "<li class='navitem'><form action= 'insertVariantPage.php' method='post' enctype='multipart/form-data'><button type='submit' name='submit'>Insert New Variant</button></form></li>
                 </div>
                 </ul>
@@ -88,9 +99,17 @@
                 LIMIT 10;";
                 $result = $db->query($query);
 
+                function rupiah($angka){
+	
+                    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+                    return $hasil_rupiah;
+                 
+                }
+
                 while ($user=$result->fetchArray()){
+
                     // TODO: make image clickable with the existing function
-                    echo "<div class='responsif'> <div class='gambar'> <a href='includes/displayVariant.inc.php?id=" . $user['id'] .  "'><img src='includes/" . $user['gambar'] . "' alt='Gambar Dorayaki' width='100' height='50'> <div class='deskripsi'> <p>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p>Harga: " . $user['harga'] . "</p><p>Stok :" . $user['stok'] . "</p></div></a></div></div>";
+                    echo "<div class='responsif'> <div class='gambar'> <a href='includes/displayVariant.inc.php?id=" . $user['id'] .  "'><img src='includes/" . $user['gambar'] . "' alt='Gambar Dorayaki' width='100' height='50'> <div class='deskripsi'> <p id='nama'>" . $user['nama'] . "</p><p>" . $user['deskripsi']. "</p><p id='harga'>" . rupiah($user['harga']) . "</p><p>stok:" . $user['stok'] . "</p><p>terjual:" . $user['terjual'] . "</p></div></a></div></div>";
                 }
 
                 echo'</div>
@@ -114,6 +133,17 @@ if (isset($_GET['pembelian'])) {
     displayAlert('Pembelian berhasil');
 }
 
+if (isset($_GET["ubah"]) && $_GET["ubah"] == "true") {
+    displayAlert("Perubahan stok berhasil");
+}
+
+if (isset($_GET["insert"]) && $_GET["insert"] == "success") {
+    displayAlert("Penambahan dorayaki berhasil");
+}
+
+if (isset($_GET["delete"]) && $_GET["delete"] == "success") {
+    displayAlert("Berhasil menghapus dorayaki");
+}
 ?> 
 </body>
 

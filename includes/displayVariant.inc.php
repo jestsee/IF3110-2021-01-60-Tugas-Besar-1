@@ -3,6 +3,8 @@
 session_start();
 
 include_once "dorayakiFunctions.php";
+require_once 'functions.inc.php';
+checkCookie1(); // cek masih login ga
 ?>
 
 <html lang="en">
