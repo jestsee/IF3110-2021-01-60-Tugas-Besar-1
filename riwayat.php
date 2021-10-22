@@ -59,8 +59,9 @@ if( isset($_SESSION['level']) ) {
 		<td><a href="includes/displayVariant.inc.php?id=<?= $row["id_dorayaki"] ?>"
         ><?= $row["nama_dorayaki"]; ?></a></td>
 		<td><?= $row["jumlah_pengubahan"]; ?></td>
-		<td id="total-harga1"><?= $row["total_harga"]; ?></td>
+		<td class="ayo-dong"><?= $row["total_harga"]; ?></td>
 		<td><?= $row["time"]; ?></td>
+
 	</tr>
     <?php endwhile; ?>
 
@@ -72,7 +73,7 @@ if( isset($_SESSION['level'])) {
         // hide harga dan nama kolom
         echo "<script src='includes/bedainTampilan.js'></script>";
         echo "<script>hideAttributebyId('total-harga')</script>";
-        echo "<script>hideAttributebyId('total-harga1')</script>";
+        echo "<script>hideHarga()</script>";
         echo "<script>attribute('jumlah-pengubahan','Jumlah Pengubahan')</script>";
 
     } elseif ($_SESSION['level']=='user') {
