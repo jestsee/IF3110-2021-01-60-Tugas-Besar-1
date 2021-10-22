@@ -1,7 +1,7 @@
 <?php
     //include_once "index.php";
     session_start();
-    echo('<link rel="stylesheet" href="../css/dashboardstylesheet.css" type="text/css">'); 
+    echo('<link rel="stylesheet" href="css/dashboardstylesheet.css" type="text/css">'); 
     class MyDB extends SQLite3 { 
         function __construct() { 
             $this->open('includes/dorayaki.db'); 
@@ -11,7 +11,7 @@
     
     function gethasilsearch($cari){
         global $db;
-        $query = "SELECT * FROM dorayaki WHERE nama LIKE '$cari'";
+        $query = "SELECT * FROM dorayaki WHERE nama LIKE '%$cari%'";
         echo'<div class="wrapper">
         <div class="isi">';
         $result = $db->query($query);
