@@ -46,7 +46,7 @@ checkCookie1(); // cek masih login ga
             <?php echo buyForUser($_GET['id']); ?>
         </form>
         <form action="deleteVariant.inc.php" method="POST" id="delete" >
-            <button id="tombol-delete" type="submit" name="delete" value=<?php echo $_GET['id']; ?>>hapus</button>
+            <button onclick="return confirm('Hapus dorayaki?')" id="tombol-delete" type="submit" name="delete" value=<?php echo $_GET['id']; ?>>hapus</button>
         </form>
       </div>
     </div>
